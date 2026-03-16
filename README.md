@@ -1,3 +1,20 @@
+# 🥚 Incub'App | Expert en Coureurs Indiens
+
+L'assistant digital indispensable pour l'incubation artificielle des œufs de canards Coureurs Indiens. 
+
+---
+
+## 🦆 Pourquoi cette application ?
+L'incubation des Coureurs Indiens dure 28 jours et demande une précision rigoureuse. **Incub'App** sécurise ce processus en offrant un suivi jour après jour, de la mise en couveuse jusqu'à la sortie de l'éclosoir.
+
+## ✨ Fonctionnalités Spécifiques
+* **📅 Chronologie de 28 jours** : Calcul automatique du stade de développement.
+* **🕯️ Guide de Mirage** : Illustrations intégrées pour comparer vos œufs aux stades clés (J7, J14, J22, J26).
+* **💧 Paramètres Vitaux** : Rappels pour la température, l'hygrométrie et la pulvérisation/refroidissement.
+* **📅 Première semaine de vie** : Le plus dur est fait, mais les premières semaines sont cruciales pour le développement du caneton.
+* **📗 Guide complet** : Le guide complet rédigé et mis en page par Lydiane B. et Loïc M. est disponible directement dans l'application.
+* **💾 Sauvegarde des données** : Les données de l'application sont susceptibles de disparaître en cas de réinitialisation du cache du navigateur. Pour pallier ce problème, un export au format .json est possible et conseillé régulièrement.
+
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
