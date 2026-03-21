@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, Scatter, ScatterChart } from "recharts";
 
 // IMAGES RÉELLES embarquées en base64
 const IMGS = {
@@ -325,7 +326,7 @@ const calculateIncubationDay = (startDateString) => {
   const start = new Date(startDateString);
   start.setHours(0, 0, 0, 0); // On force le début à minuit
 
-  const today = new Date();
+  const today = new Date(); // ligne à remplacer par const today = new Date(start.getTime() + 29 * 24 * 60 * 60 * 1000); pour faire les tests
   today.setHours(0, 0, 0, 0); // On force aujourd'hui à minuit
 
   const diffInMs = today.getTime() - start.getTime();
@@ -513,7 +514,7 @@ const PrimaryBtn = ({ onClick, children, className = "", disabled = false }) => 
 // ============================================================
 // PAGE ACCUEIL
 // ============================================================
-const HomePage = ({ sessions, onNewSession, onSelectSession, onExport, onImportClick, onGuide }) => {
+const HomePage = ({ sessions, onNewSession, onSelectSession, onExport, onImportClick, onGuide, onAide }) => {
   return (
     <div className="min-h-screen flex flex-col" style={{ background: "linear-gradient(160deg, #F9F5EC 0%, #EDE4D0 100%)" }}>
       {/* En-tête */}
@@ -543,7 +544,12 @@ const HomePage = ({ sessions, onNewSession, onSelectSession, onExport, onImportC
           <PrimaryBtn onClick={onNewSession} className="w-full text-lg py-4 text-xl">
             🥚 Démarrer un projet
           </PrimaryBtn>
-          <button onClick={onGuide}
+          <button onClick={onAide}
+            className="w-full py-3 rounded-2xl border-2 border-[#C4A882] text-[#5A3E2B] font-bold text-sm bg-white/60 hover:bg-[#EDE4D0] transition-all"
+          >
+            ❓ Aide & Import/Export
+          </button>
+		  <button onClick={onGuide}
             className="w-full py-3 rounded-2xl border-2 border-[#C4A882] text-[#5A3E2B] font-bold text-sm bg-white/60 hover:bg-[#EDE4D0] transition-all">
             📖 Guide complet de l'incubation des CCI
           </button>
@@ -770,7 +776,7 @@ const CheckItem = ({ label, icon, checked, onChange }) => (
 // ============================================================
 // PAGE DASHBOARD
 // ============================================================
-const DashboardPage = ({ session, onBack, onDeleteSession, onGuide, onUpdateSession }) => {
+const DashboardPage = ({ session, onBack, onDeleteSession, onGuide, onUpdateSession, onBilan }) => {
   // 1. Gestion du jour et actualisation automatique
   const [day, setDay] = useState(Math.min(calculateIncubationDay(session.startDate), 35));
 
@@ -801,6 +807,10 @@ const DashboardPage = ({ session, onBack, onDeleteSession, onGuide, onUpdateSess
   };
 
   const [mirageOpen, setMirageOpen] = useState(false);
+  const [eclosionOpen, setEclosionOpen] = useState(false);
+  const [finIncubationOpen, setFinIncubationOpen] = useState(false);
+  const [eclosionCount, setEclosionCount] = useState(1);
+  const [rapportOpen, setRapportOpen] = useState(false);
   const [infoOpen, setInfoOpen] = useState(false);
   const [s1Open, setS1Open] = useState(false);
   const [confirmDelete, setConfirmDelete] = useState(false);
@@ -816,7 +826,23 @@ const DashboardPage = ({ session, onBack, onDeleteSession, onGuide, onUpdateSess
       onUpdateSession(updatedSession);
     }
   };
-
+  
+  // Construction des données pour le graphique Rapport
+  const rapportData = Array.from({ length: day + 1 }, (_, i) => {
+    const ref = INCUBATION_DATA.dailyParams(i);
+    const stored = (() => {
+      try { return JSON.parse(localStorage.getItem(`incubapp_daily_${session.id}_${i}`)) || {}; } catch { return {}; }
+    })();
+    return {
+      jour: `J${i}`,
+      tempRef: ref.tempC,
+      humRefMin: ref.humMin,
+      humRefMax: ref.humMax,
+      tempReelle: stored.temp ? parseFloat(stored.temp) : null,
+      humReelle: stored.hum ? parseFloat(stored.hum) : null,
+    };
+  }).filter(d => d.tempReelle !== null || d.humReelle !== null);
+  
   const isCardComplete = () => {
     if (isS1) return !!daily.water && !!daily.food && !!daily.lamp;
     const temp = parseFloat(tempEntry);
@@ -873,6 +899,31 @@ const DashboardPage = ({ session, onBack, onDeleteSession, onGuide, onUpdateSess
           <PrimaryBtn onClick={() => setMirageOpen(true)} className="w-full flex items-center gap-3">
             <span className="text-2xl">🔦</span> Mirage J{day} : Guide diagnostic
           </PrimaryBtn>
+        )}
+		{day >= 26 && (
+          <button
+            onClick={() => setEclosionOpen(true)}
+            className="w-full py-3 rounded-2xl border-2 border-[#C4703E] text-white font-bold text-sm bg-gradient-to-b from-[#D4703E] to-[#A05030] shadow-md hover:from-[#E4804E] transition-all"
+          >
+            🐣 Signaler une éclosion
+          </button>
+        )}
+		{day >= 28 && !session.incubationTerminee && (
+          <button
+            onClick={() => setFinIncubationOpen(true)}
+            className="w-full py-3 rounded-2xl border-2 border-[#8B7355] text-white font-bold text-sm bg-gradient-to-b from-[#8B7355] to-[#6B5535] shadow-md hover:from-[#9B8365] transition-all"
+          >
+            🏁 Terminer l'incubation
+          </button>
+        )}
+		
+		{session.incubationTerminee && (
+          <button
+            onClick={onBilan}
+            className="w-full py-3 rounded-2xl border-2 border-[#5A8A4A] text-white font-bold text-sm bg-gradient-to-b from-[#5A8A4A] to-[#3A6A2A] shadow-md hover:from-[#6A9A5A] transition-all"
+          >
+            🏆 Voir le bilan de l'incubation
+          </button>
         )}
 
         {isS1 && <PrimaryBtn onClick={() => setS1Open(true)} className="w-full">🐥 Soins Semaine +1</PrimaryBtn>}
@@ -941,11 +992,108 @@ const DashboardPage = ({ session, onBack, onDeleteSession, onGuide, onUpdateSess
             )}
           </div>
         </div>
-
+		{!isS1 && rapportData.length > 0 && (
+        <button
+          onClick={() => setRapportOpen(true)}
+          className="w-full py-3 rounded-2xl border-2 border-[#8FAF7E] text-[#3A5A2A] font-bold text-sm bg-white/60 hover:bg-[#EDE4D0] transition-all"
+        >
+         📊 Rapport T° & hygrométrie
+        </button>
+		)}
         <PrimaryBtn onClick={handleValidate} disabled={!isCardComplete()} className="w-full">
           {isCardComplete() ? "✅ Valider la journée" : "Saisie incomplète"}
         </PrimaryBtn>
       </main>
+	  
+	  <Modal isOpen={finIncubationOpen} onClose={() => setFinIncubationOpen(false)} title="🏁 Terminer l'incubation">
+        <div className="flex flex-col gap-4">
+          <p className="text-sm text-[#5A3E2B] font-medium">
+            Êtes-vous sûr de vouloir terminer cette incubation ? Cette action déclenchera le suivi de la première semaine de vie des canetons.
+          </p>
+          <div className="bg-[#F5F0E8] rounded-xl p-3 border-2 border-[#C4A882] text-sm">
+            <div className="flex justify-between mb-1">
+              <span className="text-[#5A3E2B] font-medium">Œufs de départ</span>
+              <span className="font-black text-[#2A1A0E]">{session.initialEggs}</span>
+            </div>
+            <div className="flex justify-between mb-1">
+              <span className="text-[#5A3E2B] font-medium">Éclosions</span>
+              <span className="font-black text-[#5A8A4A]">{session.hatchCount || 0} 🐥</span>
+            </div>
+            <div className="flex justify-between">
+              <span className="text-[#5A3E2B] font-medium">Œufs écartés</span>
+              <span className="font-black text-[#C4703E]">{(session.initialEggs || 0) - (session.currentEggs || 0) - (session.hatchCount || 0)}</span>
+            </div>
+          </div>
+          <PrimaryBtn onClick={() => {
+            const updated = {
+              ...session,
+              incubationTerminee: true,
+              dateFinIncubation: new Date().toISOString(),
+            };
+            onUpdateSession(updated);
+            setFinIncubationOpen(false);
+          }} className="w-full">
+            ✅ Confirmer la fin d'incubation
+          </PrimaryBtn>
+        </div>
+      </Modal>
+	  
+	  <Modal isOpen={eclosionOpen} onClose={() => setEclosionOpen(false)} title="🐣 Signaler une éclosion">
+        <div className="flex flex-col gap-4">
+	      <p className="text-sm text-[#5A3E2B] font-medium">Combien d'œufs ont éclos ?</p>
+		  <div className="flex items-center justify-center gap-4">
+		    <button
+		      onClick={() => setEclosionCount(c => Math.max(1, c - 1))}
+			  className="w-10 h-10 rounded-full bg-[#EDE4D0] border-2 border-[#C4A882] text-xl font-bold text-[#3D2B1F] hover:bg-[#D4C4A8]"
+			>−</button>
+		    <span className="text-4xl font-black text-[#3D2B1F]">{eclosionCount}</span>
+	        <button
+              onClick={() => setEclosionCount(c => Math.min(session.currentEggs, c + 1))}
+			  className="w-10 h-10 rounded-full bg-[#EDE4D0] border-2 border-[#C4A882] text-xl font-bold text-[#3D2B1F] hover:bg-[#D4C4A8]"
+			>+</button>
+	      </div>
+	      <PrimaryBtn onClick={() => {
+		    const updated = {
+			  ...session,
+			  hatchCount: (session.hatchCount || 0) + eclosionCount,
+			  currentEggs: Math.max(0, (session.currentEggs || session.initialEggs) - eclosionCount),
+			};
+			onUpdateSession(updated);
+			setEclosionOpen(false);
+			setEclosionCount(1);
+		  }} className="w-full">
+		    ✅ Confirmer {eclosionCount} éclosion{eclosionCount > 1 ? "s" : ""}
+		  </PrimaryBtn>
+		</div>
+      </Modal>	  
+	  
+	  <Modal isOpen={rapportOpen} onClose={() => setRapportOpen(false)} title="📊 Rapport T° & Hygrométrie">
+  <div className="flex flex-col gap-4">
+    <p className="text-xs text-[#5A3E2B] font-medium">{rapportData.length} jour(s) de données enregistrées</p>
+    <div className="w-full" style={{ height: 220 }}>
+      <ResponsiveContainer width="100%" height="100%">
+        <ScatterChart margin={{ top: 10, right: 10, bottom: 10, left: -10 }}>
+          <CartesianGrid strokeDasharray="3 3" stroke="#EDE4D0" />
+          <XAxis dataKey="jour" tick={{ fontSize: 9 }} />
+          <YAxis yAxisId="temp" domain={[35, 40]} tick={{ fontSize: 9 }} stroke="#C4703E" />
+          <YAxis yAxisId="hum" orientation="right" domain={[30, 80]} tick={{ fontSize: 9 }} stroke="#5A8A4A" />
+          <Tooltip />
+          <Legend wrapperStyle={{ fontSize: 10 }} />
+          <Scatter yAxisId="temp" name="T° réelle" data={rapportData.filter(d => d.tempReelle)} dataKey="tempReelle" fill="#C4703E" />
+          <Scatter yAxisId="temp" name="T° référence" data={rapportData} dataKey="tempRef" fill="#F5C4A0" shape="cross" />
+          <Scatter yAxisId="hum" name="Hygro réelle" data={rapportData.filter(d => d.humReelle)} dataKey="humReelle" fill="#5A8A4A" />
+          <Scatter yAxisId="hum" name="Hygro min ref" data={rapportData} dataKey="humRefMin" fill="#B0D4A0" shape="cross" />
+        </ScatterChart>
+      </ResponsiveContainer>
+    </div>
+    <div className="flex gap-3 text-xs flex-wrap">
+      <span className="flex items-center gap-1"><span className="w-3 h-3 rounded-full bg-[#C4703E] inline-block"/>T° réelle</span>
+      <span className="flex items-center gap-1"><span className="w-3 h-3 rounded-full bg-[#F5C4A0] inline-block"/>T° référence (37.5°C)</span>
+      <span className="flex items-center gap-1"><span className="w-3 h-3 rounded-full bg-[#5A8A4A] inline-block"/>Hygro réelle</span>
+      <span className="flex items-center gap-1"><span className="w-3 h-3 rounded-full bg-[#B0D4A0] inline-block"/>Hygro référence</span>
+    </div>
+  </div>
+</Modal>
 
       {/* Modals simplifiées pour l'exemple */}
       <Modal isOpen={validationOpen} onClose={() => {setValidationOpen(false); setSaveReminderOpen(true)}} title="🎉 Validé !">
@@ -958,6 +1106,112 @@ const DashboardPage = ({ session, onBack, onDeleteSession, onGuide, onUpdateSess
       <Modal isOpen={confirmDelete} onClose={() => setConfirmDelete(false)} title="Supprimer ?">
         <button onClick={() => onDeleteSession(session.id)} className="w-full p-3 bg-red-500 text-white rounded-xl font-bold">Confirmer la suppression</button>
       </Modal>
+    </div>
+  );
+};
+
+// ============================================================
+// PAGE BILAN
+// ============================================================
+const BilanPage = ({ session, onBack }) => {
+  const totalDays = session.dateFinIncubation
+    ? Math.floor((new Date(session.dateFinIncubation) - new Date(session.startDate)) / 86400000)
+    : calculateIncubationDay(session.startDate);
+
+  const eclosions = session.hatchCount || 0;
+  const ecartes = (session.initialEggs || 0) - (session.currentEggs || 0) - eclosions;
+  const tauxEclosion = session.initialEggs ? Math.round((eclosions / session.initialEggs) * 100) : 0;
+
+  // Récupérer toutes les données quotidiennes
+  const bilanData = Array.from({ length: totalDays + 1 }, (_, i) => {
+    const ref = INCUBATION_DATA.dailyParams(i);
+    const stored = (() => {
+      try { return JSON.parse(localStorage.getItem(`incubapp_daily_${session.id}_${i}`)) || {}; } catch { return {}; }
+    })();
+    return {
+      jour: `J${i}`,
+      tempRef: ref.tempC,
+      humRefMin: ref.humMin,
+      humRefMax: ref.humMax,
+      tempReelle: stored.temp ? parseFloat(stored.temp) : null,
+      humReelle: stored.hum ? parseFloat(stored.hum) : null,
+    };
+  }).filter(d => d.tempReelle !== null || d.humReelle !== null);
+
+  return (
+    <div className="min-h-screen flex flex-col" style={{ background: "linear-gradient(160deg, #F9F5EC 0%, #EDE4D0 100%)" }}>
+      <header className="pt-8 pb-4 px-4 max-w-lg mx-auto w-full">
+        <button onClick={onBack} className="text-[#8B7355] text-sm flex items-center gap-1 hover:text-[#5A3E2B] font-semibold mb-4">← Retour</button>
+        <h2 className="text-3xl font-black text-[#2A1A0E]">🏆 Bilan</h2>
+        <p className="text-sm text-[#7A5C3E] mt-1 font-medium">{session.name}</p>
+      </header>
+
+      <main className="flex-1 px-4 pb-10 flex flex-col gap-4 max-w-lg mx-auto w-full">
+        {/* Stats globales */}
+        <div className="grid grid-cols-2 gap-3">
+          <div className="bg-white/80 rounded-2xl border-2 border-[#8FAF7E] p-4 text-center shadow-sm">
+            <div className="text-3xl font-black text-[#5A8A4A]">{eclosions}</div>
+            <div className="text-xs font-bold text-[#5A3E2B] mt-1">🐥 Éclosions</div>
+          </div>
+          <div className="bg-white/80 rounded-2xl border-2 border-[#C4A882] p-4 text-center shadow-sm">
+            <div className="text-3xl font-black text-[#3D2B1F]">{session.initialEggs}</div>
+            <div className="text-xs font-bold text-[#5A3E2B] mt-1">🥚 Œufs de départ</div>
+          </div>
+          <div className="bg-white/80 rounded-2xl border-2 border-[#C4703E] p-4 text-center shadow-sm">
+            <div className="text-3xl font-black text-[#C4703E]">{ecartes}</div>
+            <div className="text-xs font-bold text-[#5A3E2B] mt-1">❌ Œufs écartés</div>
+          </div>
+          <div className="bg-white/80 rounded-2xl border-2 border-[#8FAF7E] p-4 text-center shadow-sm">
+            <div className="text-3xl font-black text-[#5A8A4A]">{tauxEclosion}%</div>
+            <div className="text-xs font-bold text-[#5A3E2B] mt-1">📈 Taux d'éclosion</div>
+          </div>
+        </div>
+
+        {/* Durée */}
+        <div className="bg-white/80 rounded-2xl border-2 border-[#C4A882] p-4 shadow-sm flex justify-between items-center">
+          <span className="text-sm font-bold text-[#5A3E2B]">📅 Durée totale</span>
+          <span className="text-xl font-black text-[#2A1A0E]">{totalDays} jours</span>
+        </div>
+
+        {/* Graphique global */}
+        {bilanData.length > 0 && (
+          <div className="bg-white/80 rounded-2xl border-2 border-[#C4A882] p-4 shadow-sm">
+            <h3 className="text-sm font-bold text-[#3D2B1F] mb-3">📊 T° & Hygrométrie sur toute l'incubation</h3>
+            <div style={{ height: 220 }}>
+              <ResponsiveContainer width="100%" height="100%">
+                <ScatterChart margin={{ top: 10, right: 10, bottom: 10, left: -10 }}>
+                  <CartesianGrid strokeDasharray="3 3" stroke="#EDE4D0" />
+                  <XAxis dataKey="jour" tick={{ fontSize: 8 }} />
+                  <YAxis yAxisId="temp" domain={[35, 40]} tick={{ fontSize: 8 }} stroke="#C4703E" />
+                  <YAxis yAxisId="hum" orientation="right" domain={[30, 80]} tick={{ fontSize: 8 }} stroke="#5A8A4A" />
+                  <Tooltip />
+                  <Scatter yAxisId="temp" name="T° réelle" data={bilanData.filter(d => d.tempReelle)} dataKey="tempReelle" fill="#C4703E" />
+                  <Scatter yAxisId="temp" name="T° ref" data={bilanData} dataKey="tempRef" fill="#F5C4A0" shape="cross" />
+                  <Scatter yAxisId="hum" name="Hygro réelle" data={bilanData.filter(d => d.humReelle)} dataKey="humReelle" fill="#5A8A4A" />
+                  <Scatter yAxisId="hum" name="Hygro ref min" data={bilanData} dataKey="humRefMin" fill="#B0D4A0" shape="cross" />
+                </ScatterChart>
+              </ResponsiveContainer>
+            </div>
+          </div>
+        )}
+
+        {/* Dates clés */}
+        <div className="bg-white/80 rounded-2xl border-2 border-[#C4A882] p-4 shadow-sm">
+          <h3 className="text-sm font-bold text-[#3D2B1F] mb-3">📅 Dates clés</h3>
+          <div className="flex flex-col gap-2 text-sm">
+            <div className="flex justify-between">
+              <span className="text-[#5A3E2B] font-medium">🥚 Mise en incubation</span>
+              <span className="font-bold">{new Date(session.startDate).toLocaleDateString("fr-FR")}</span>
+            </div>
+            {session.dateFinIncubation && (
+              <div className="flex justify-between">
+                <span className="text-[#5A3E2B] font-medium">🏁 Fin d'incubation</span>
+                <span className="font-bold">{new Date(session.dateFinIncubation).toLocaleDateString("fr-FR")}</span>
+              </div>
+            )}
+          </div>
+        </div>
+      </main>
     </div>
   );
 };
@@ -1074,6 +1328,7 @@ const GuidePage = ({ onBack }) => {
 // ============================================================
 export default function IncubApp() {
   const [page, setPage] = useState("home");
+  const [aideOpen, setAideOpen] = useState(false);
   const [sessions, setSessions] = useState([]);
   const [activeSessionId, setActiveSessionId] = useState(null);
   const importRef = useRef(null);
@@ -1186,11 +1441,49 @@ export default function IncubApp() {
         details summary { list-style: none; }
         details summary::-webkit-details-marker { display: none; }
       `}</style>
-
+      <Modal isOpen={aideOpen} onClose={() => setAideOpen(false)} title="❓ Aide & Import/Export">
+        <div className="flex flex-col gap-4 text-sm text-[#3D2B1F]">
+          <div className="bg-[#F5F0E8] rounded-xl p-3 border-2 border-[#C4A882]">
+            <div className="font-black mb-1">🦆 Bienvenue sur Incub'app</div>
+            <p className="font-medium text-[#5A3E2B]">Votre carnet de bord numérique pour l'incubation des œufs de Coureur Indien, d'après le guide de Lydiane B.</p>
+          </div>
+          <div className="bg-[#F5F0E8] rounded-xl p-3 border-2 border-[#C4A882]">
+            <div className="font-black mb-2">📋 Comment démarrer</div>
+            <ol className="flex flex-col gap-1 font-medium text-[#5A3E2B]">
+              <li>1. Cliquez sur "Démarrer un suivi"</li>
+              <li>2. Donnez un nom à votre couvée et saisissez la date J0</li>
+              <li>3. Renseignez le nombre d'œufs</li>
+              <li>4. Chaque jour, remplissez le relevé du jour</li>
+            </ol>
+          </div>
+          <div className="bg-[#FFF3CD] rounded-xl p-3 border-2 border-[#C4A460]">
+            <div className="font-black mb-2">💾 Sauvegarder vos données</div>
+            <p className="font-medium text-[#5A3E2B] mb-2">⚠️ L'app stocke vos données dans le cache du navigateur. Ce cache peut être vidé à tout moment !</p>
+            <ul className="flex flex-col gap-1 font-medium text-[#5A3E2B]">
+              <li>• Exportez régulièrement vos données via le bouton "⬆️ Exporter .json"</li>
+              <li>• En cas de perte, réimportez-les via "⬇️ Importer .json"</li>
+              <li>• Conseil : exportez après chaque journée validée</li>
+            </ul>
+          </div>
+          <div className="bg-[#F5F0E8] rounded-xl p-3 border-2 border-[#C4A882]">
+            <div className="font-black mb-2">📊 Fonctionnalités</div>
+            <ul className="flex flex-col gap-1 font-medium text-[#5A3E2B]">
+              <li>• Relevé quotidien T° et hygrométrie avec graphique</li>
+              <li>• Guide de mirage illustré (J7, J14, J22, J26)</li>
+              <li>• Signalement des éclosions dès J26</li>
+              <li>• Bilan final avec statistiques</li>
+            </ul>
+         </div>
+         <div className="bg-[#F5F0E8] rounded-xl p-3 border-2 border-[#C4A882]">
+           <div className="font-black mb-1">📖 Guide complet</div>
+           <p className="font-medium text-[#5A3E2B]">Consultez le guide intégral depuis l'accueil pour tout savoir sur la sélection des œufs, l'hygrométrie, l'éclosion et les soins S+1.</p>
+         </div>
+       </div>
+     </Modal>
       <AnimatePresence mode="wait">
         {page === "home" && (
           <motion.div key="home" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0, x: -30 }}>
-            <HomePage sessions={sessions} onNewSession={() => setPage("setup")} onSelectSession={handleSelectSession} onExport={handleExport} onImportClick={handleImportClick} onGuide={() => setPage("guide")} />
+            <HomePage sessions={sessions} onNewSession={() => setPage("setup")} onSelectSession={handleSelectSession} onExport={handleExport} onImportClick={handleImportClick} onGuide={() => setPage("guide")} onAide={() => setAideOpen(true)} />
           </motion.div>
         )}
         {page === "setup" && (
@@ -1205,8 +1498,14 @@ export default function IncubApp() {
 			  onBack={() => setPage("home")} 
 			  onDeleteSession={handleDeleteSession} 
 			  onGuide={() => setPage("guide")} 
-			  onUpdateSession={handleUpdateSession} 
+			  onUpdateSession={handleUpdateSession}
+              onBilan={() => setPage("bilan")}			  
 			/>
+          </motion.div>
+        )}
+		{page === "bilan" && activeSession && (
+          <motion.div key="bilan" initial={{ opacity: 0, x: 40 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -40 }}>
+            <BilanPage session={activeSession} onBack={() => setPage("dashboard")} />
           </motion.div>
         )}
         {page === "guide" && (
