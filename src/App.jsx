@@ -179,7 +179,7 @@ const GUIDE_SECTIONS = [
     liste: ["Un incubateur (manuel ou automatique)", "Une lampe à mirer (ou le flash du téléphone)", "Un thermomètre précis (calibré à 37,3-37,5°C)", "Un hygromètre fonctionnel", "Un spray n'ayant contenu que de l'eau", "Une éponge neuve ou désinfectée"],
   },
   {
-    id: "preparation", emoji: "🏠", titre: "Préparation de la couveuse", //OK
+    id: "preparation", emoji: "⚕️", titre: "Préparation de la couveuse", //OK
     contenu: "L'incubateur doit être propre et désinfecté. Vérifiez (le cas échéant) : thermomètre, hygromètre, ventilateur, moteur de retournement. Bien contrôler la température avant de lancer l'incubation, éventuellement avec 2 thermomètres différents.",
   },
   {
