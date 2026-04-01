@@ -112,88 +112,88 @@ const MirageEgg = ({ type, size }) => {
 };
 
 // ============================================================
-// DONNÉES MIRAGE ENRICHIES AVEC ILLUSTRATIONS
+// DONNÉES MIRAGE ENRICHIES AVEC ILLUSTRATIONS                   //OK
 // ============================================================
 const MIRAGE_GUIDE_RICH = {
-  7: {
-    title: "👁️ Mirage J7 — 1er mirage",
+  10: { //OK
+    title: "👀️ Mirage J10 — 1er mirage",
     desc: "Premier contrôle : détectez les embryons vivants. Réalisez-le dans une pièce sombre, rapidement (max 5 min hors incubateur).",
-    airPocket: "Poche d'air : ~1/10 de l'œuf",
+    airPocket: "Poche d'air = ~10% de l'œuf",
     signs: [
-      { icon: "🟢", label: "✅ Ce qu'il faut voir", desc: "Réseau vasculaire en araignée rouge, embryon visible au centre, poche d'air petite en haut.", img: "m1_true" },
+      { icon: "👍🏼", label: "✅ Ce qu'il faut voir", desc: "Réseau vasculaire en araignée rouge, embryon visible au centre, poche d'air petite en haut.", img: "m1_true" },
       { icon: "❌", label: "❌ Œuf clair / anneau de sang", desc: "Transparent sans réseau (non fécondé) ou anneau rouge (mort précoce). Retirer.", img: "m1_false", wide: true },
     ],
     airImg: "m1_airsize",
     tip: "En cas de doute, remettez l'œuf 2-3 jours puis re-mirez.",
   },
-  14: {
-    title: "👁️ Mirage J14 — 2e mirage",
+  18: { //OK
+    title: "👀 Mirage J18 — 2e mirage",
     desc: "Développement avancé. La moitié inférieure doit être sombre. Vérifiez les mouvements de l'embryon.",
     airPocket: "Poche d'air : ~1/4 de l'œuf",
     signs: [
-      { icon: "🟢", label: "✅ Ce qu'il faut voir", desc: "Silhouette sombre qui bouge, réseau vasculaire visible, poche d'air bien délimitée en haut.", img: "m2_true" },
-      { icon: "⚫", label: "❌ Mort (aucun mouvement)", desc: "Masse sombre sans mouvement ni réseau vasculaire. Odeur possible. Retirer.", img: "m2_false" },
+      { icon: "👍🏼", label: "✅ Ce qu'il faut voir", desc: "Silhouette sombre qui bouge, réseau vasculaire visible, poche d'air bien délimitée en haut, environ 20% de l'œuf.", img: "m2_true" },
+      { icon: "💀", label: "❌ Mort (aucun mouvement)", desc: "Masse sombre sans mouvement ni réseau vasculaire. Odeur possible. Retirer.", img: "m2_false" },
     ],
     airImg: "m2_airsize",
     tip: "Ajustez l'hygrométrie selon la poche d'air (trop petite → réduire, trop grande → augmenter).",
   },
-  22: {
-    title: "👁️ Mirage J22 — 3e mirage",
+  21: { //OK
+    title: "👀 Mirage J21 — 3e mirage",
     desc: "Avant la mise en éclosion. L'œuf doit être presque entièrement sombre. Vérifiez la poche d'air.",
     airPocket: "Poche d'air : ~1/3 de l'œuf",
     signs: [
-      { icon: "🟢", label: "✅ Ce qu'il faut voir", desc: "Œuf très sombre, poche d'air grande et irrégulière, mouvements visibles, zone de béchage possible.", img: null },
-      { icon: "⚫", label: "❌ Mort (aucun signe de vie)", desc: "Aucun mouvement depuis 2-3 jours. Retirer délicatement.", img: null },
+      { icon: "👍🏼", label: "✅ Ce qu'il faut voir", desc: "Œuf très sombre, poche d'air grande et irrégulière (~30% de l'œuf), mouvements visibles, zone de béchage possible.", img: "m3_true"  },
+      { icon: "💀", label: "❌ Mort (aucun signe de vie)", desc: "Aucun mouvement depuis 2-3 jours. Retirer délicatement.", img: "m3_false"  },
     ],
     airImg: "m3_airsize",
     tip: "Les mirages sont plus rapprochés pour ajuster au mieux la taille de la poche d'air.",
   },
-  26: {
-    title: "👁️ Mirage J26 — Mise en éclosion",
+  25: { //OK
+    title: "👀️ Mirage J25 — Mise en éclosion",
     desc: "Dernier mirage. Arrêt du retournement. Placer les œufs à plat.",
     airPocket: "Poche d'air : ~30% de l'œuf",
     signs: [
-      { icon: "🟢", label: "✅ Prêt à éclore", desc: "Grande poche d'air irrégulière (~30%), zone de béchage visible (étoile noire), mouvements et sons 'piou piou' possibles !", img: "m4_true" },
-      { icon: "⚫", label: "❌ Mort (aucune vie)", desc: "Ni mouvement ni son. Aucun béchage. Retirer avec précaution.", img: "m4_false" },
+      { icon: "👍🏼", label: "✅ Prêt à éclore", desc: "Grande poche d'air irrégulière (~35%), zone de béchage visible (étoile), mouvements et sons 'piou piou' possibles !", img: "m4_true" },
+      { icon: "💀", label: "❌ Mort (aucune vie)", desc: "Ni mouvement ni son. Aucun béchage. Retirer avec précaution.", img: "m4_false" },
     ],
     airImg: "m4_airsize",
-    tip: "🔒 Après ce mirage : œufs à plat, arrêt retournement, humidité 60-65%, trous d'aération ouverts.",
+    tip: "🔒 Après ce mirage : œufs à plat, arrêt du retournement, humidité 60-65%, trous d'aération ouverts.",
     warning: "⚠️ Phase critique : ne plus ouvrir la couveuse ! Une chute de T° peut 'serrer' la membrane contre le caneton.",
   },
 };
 
 // ============================================================
-// GUIDE COMPLET — D'après Lydiane B. & Loïc M. / Coureur Indien 24
+// GUIDE COMPLET — D'après Lydiane B. & Loïc M. / Coureur Indien 24 //OK
 // ============================================================
 const GUIDE_SECTIONS = [
   {
-    id: "objectifs", emoji: "🎯", titre: "Objectifs",
+    id: "objectifs", emoji: "🎯", titre: "Objectifs", //OK
     contenu: "Ce guide permet à toutes et tous de mener une incubation d'œufs de Coureur Indien à son terme dans les meilleures conditions. Il indique jour après jour tous les paramètres à contrôler.",
   },
   {
-    id: "oeuf_feconde", emoji: "🔬", titre: "L'œuf fécondé",
+    id: "oeuf_feconde", emoji: "🔬", titre: "L'œuf fécondé", //OK
     contenu: "Composition d'un œuf de Coureur Indien fécondé : poche d'air, coquille, vitellus, albumen, membrane, disque germinal (embryon).",
     img: "oeuf_feconde",
   },
   {
-    id: "materiel", emoji: "🧰", titre: "Matériel nécessaire",
+    id: "materiel", emoji: "🧰", titre: "Matériel nécessaire", //OK
     liste: ["Un incubateur (manuel ou automatique)", "Une lampe à mirer (ou le flash du téléphone)", "Un thermomètre précis (calibré à 37,3-37,5°C)", "Un hygromètre fonctionnel", "Un spray n'ayant contenu que de l'eau", "Une éponge neuve ou désinfectée"],
   },
   {
-    id: "preparation", emoji: "🏠", titre: "Préparation de la couveuse",
-    contenu: "L'incubateur doit être propre et désinfecté. Vérifiez : thermomètre, hygromètre, ventilateur, moteur de retournement. Bien contrôler la température avant de lancer l'incubation, éventuellement avec 2 thermomètres différents.",
+    id: "preparation", emoji: "🏠", titre: "Préparation de la couveuse", //OK
+    contenu: "L'incubateur doit être propre et désinfecté. Vérifiez (le cas échéant) : thermomètre, hygromètre, ventilateur, moteur de retournement. Bien contrôler la température avant de lancer l'incubation, éventuellement avec 2 thermomètres différents.",
   },
   {
-    id: "selection", emoji: "🥚", titre: "Sélection des œufs",
-    contenu: "Ramassage quotidien. Poids moyen d'un œuf de CCI : 65g. Écarter les œufs :",
+    id: "selection", emoji: "🥚", titre: "Sélection des œufs", //OK
+    contenu: "Ramassage quotidien, ne garder que ceux qui ont une taille, une forme, une couleur et une texture normales. Poids moyen d'un œuf de CCI : 65g. Écarter les œufs :",
     liste: ["Trop petits ou trop gros", "Avec des bosses ou un bourrelet", "À coquille mince, poreuse ou trop épaisse", "Avec des grains de calcaire ou fissures", "Avec une extrémité très pointue", "Trop sales"],
   },
   {
-    id: "stockage", emoji: "📦", titre: "Stockage des œufs",
-    contenu: "Stockage à l'horizontale, endroit frais (13°C), humide (75%), à l'abri du soleil. Retourner à 180° deux fois par jour. Mise en incubateur idéalement entre 3 et 7 jours. Au-delà de 14 jours : déconseillé.",
+    id: "stockage", emoji: "📦", titre: "Stockage des œufs", //OK
+    contenu: "Stockage à l'horizontale, dans un endroit frais (13°C), humide (75%), à l'abri du soleil. Retourner à 180° deux fois par jour. Mise en incubateur idéalement entre 3 et 7 jours. Au-delà de 14 jours : déconseillé.",
   },
   {
-    id: "embryon", emoji: "🐣", titre: "Développement de l'embryon",
+    id: "embryon", emoji: "🧬", titre: "Développement de l'embryon", //OK
     contenu: "Du disque germinal à l'éclosion en 28 jours.",
     frise: "frise_dev",
     illustrations: [
@@ -205,20 +205,20 @@ const GUIDE_SECTIONS = [
     ],
   },
   {
-    id: "hygro", emoji: "💧", titre: "Importance de l'hygrométrie",
-    contenu: "L'hygrométrie contrôle la taille de la poche d'air. Cible : 40-50% pendant l'incubation, puis 65%+ à partir de J26 pour que la membrane ne sèche pas.",
+    id: "hygro", emoji: "💧", titre: "Importance de l'hygrométrie", //OK
+    contenu: "L'hygrométrie contrôle la taille de la poche d'air. Cible : +/- 40% pendant l'incubation, puis 65%+ à partir de J26 pour que la membrane ne sèche pas (le caneton étoufferait).",
     astuce: {
       augmenter: ["Remplir les bacs à eau", "Ajouter des éponges gorgées d'eau", "Réduire le flux d'air"],
       diminuer: ["Ouvrir la trappe d'aération au maximum", "Enlever les éponges"],
     },
   },
   {
-    id: "eclosion", emoji: "🐣", titre: "L'éclosion",
+    id: "eclosion", emoji: "🐣", titre: "L'éclosion", //OK
     contenu: "Les premiers béchages peuvent survenir dès J26. Il peut ne rien se passer durant 36h : c'est normal. Il se passe en moyenne 48h entre le béchage externe et la sortie. Les canetons peuvent rester 24h en couveuse sans manger.",
     liste: ["Ouvrir tous les trous d'aération", "Ne PAS ouvrir la couveuse pendant l'éclosion !", "Préparer l'éleveuse avant l'éclosion", "Litière : éviter les copeaux les premiers jours", "Aliment poussins/canetons à 22% de protéines", "Lampe infrarouge ou plateau chauffant"],
   },
   {
-    id: "semaines", emoji: "🐥", titre: "Les 4 premières semaines",
+    id: "semaines", emoji: "🐥", titre: "Les 4 premières semaines", //OK
     semaines: [
       { label: "Semaine 1", temp: "32-35°C", alim: "22% protéines", note: "J1 : pas de nourriture. Dès J2 : granulés concassés + aliments verts hachés." },
       { label: "Semaine 2", temp: "29-32°C", alim: "22% protéines", note: "Commencent à réguler leur température. Ajouter du gravier fin." },
@@ -227,18 +227,19 @@ const GUIDE_SECTIONS = [
     ],
   },
   {
-    id: "faq", emoji: "❓", titre: "FAQ complète",
+    id: "faq", emoji: "❓", titre: "FAQ complète", //OK
     questions: [
-      { q: "Ma cane pond mais ne couve pas, les œufs sont-ils perdus ?", r: "Non, la cane attend ~12 œufs avant de couver. Si vous les mangez, vous repoussez la couvaison." },
-      { q: "Un œuf s'est fêlé, puis-je le réparer ?", r: "Possible mais incertain : coller une feuille de papier à rouler sur la fissure." },
-      { q: "Quand nourrir les canetons après l'éclosion ?", r: "24h après l'éclosion (ils ont des réserves vitellines)." },
+      { q: "Ma cane pond mais ne couve pas, si je ne mange pas les œufs, sont-ils perdus ?", r: "Non, la cane attend ~12 œufs avant de couver. Si vous les mangez, vous repoussez la couvaison." },
+      { q: "Un œuf s'est fêlé, puis-je le réparer ?", r: "Possible mais incertain : coller une feuille de papier à cigarette sur la fissure." },
+      { q: "Quand nourrir les canetons après l'éclosion ?", r: "24h après l'éclosion (avant, ils vivent sur leurs réserves vitellines)." },
       { q: "Quand retirer la lampe chauffante ?", r: "Quand T° extérieure > 25-30°C ou après la 3e semaine." },
-      { q: "À quel âge sortir les canetons dehors ?", r: "Nord de la France : 2-3 semaines minimum. Sud ou fin printemps : dès la journée." },
-      { q: "La première étoile est à la pointe de l'œuf ?", r: "Caneton mal positionné, risque de difficulté. Préparez-vous à l'aider." },
-      { q: "Toujours rien à J28, mais ça bouge au mirage ?", r: "Tant qu'il bouge, il y a de l'espoir ! Le développement peut avoir pris du retard." },
-      { q: "Caneton très faible après l'éclosion ?", r: "L'éclosion est éprouvante. En grande faiblesse : blanc d'œuf + orties fraîches mixées." },
-      { q: "Malformation d'un caneton (cou, patte) ?", r: "Tentez de la kiné : masser la partie ou utiliser un élastique ajusté." },
-      { q: "Quel aliment donner les premiers jours ?", r: "Granulés de démarrage concassés + aliments verts hachés (pissenlit, courgette, salade)." },
+      { q: "À quel âge sortir les canetons dehors ?", r: "Pour le nord de la France, attendre 2 à 3 semaines. Pour le sud ou en fin de printemps, immédiatement en journée." },
+      { q: "La première étoile se situe à la pointe de l'œuf, que faire ?", r: "Le caneton mal positionné, difficultés à prévoir. Préparez-vous à l'aider." },
+	  { q: "Ma cane a arrêté de couver, puis-je mettre les œufs en couveuse ?", r: "Tout à fait." },
+      { q: "Toujours rien à J28, mais ça bouge au mirage ?", r: "Tant qu'il y a du mouvement, il y a de l'espoir ! Le développement peut avoir pris du retard, fiez-vous au mirage." },
+      { q: "Un caneton semble très faible après l'éclosion, que faire ?", r: "L'éclosion est éprouvante, il peut avoir besoin d'un shoot de protéines : blanc d'œuf cuit + orties fraîches mixées." },
+      { q: "Que faire en cas de malformation d'un caneton (cou, patte) ?", r: "Tentez de la kiné : massez la partie ou utilisez un élastique ajusté." },
+      { q: "Quel aliment donner les premiers jours ?", r: "Granulés de démarrage concassés + aliments verts hachés (pissenlit, courgette, salade, ortie, ...)." },
     ],
   },
 ];
@@ -246,23 +247,23 @@ const GUIDE_SECTIONS = [
 // ============================================================
 // DONNÉES MÉTIER - Guide Lydiane B. & Loïc M.
 // ============================================================
-const INCUBATION_DATA = {
-  totalDays: 35,
+const INCUBATION_DATA = { //OK
+  totalDays: 31,
   dailyParams: (day) => {
-    if (day <= 25) return { tempC: 37.5, humMin: 45, humMax: 50 };
-    return { tempC: 37.2, humMin: 65, humMax: 70 };
+    if (day <= 25) return { tempC: 37.5, humMin: 35, humMax: 45 };
+    return { tempC: 37, humMin: 60, humMax: 70 };
   },
-  mirageDays: [7, 14, 22, 26],
+  mirageDays: [10, 18, 21, 25], //OK
   keyEvents: {
     6: "⚠️ Période de sensibilité : éviter les chocs thermiques",
     10: "💧 Début refroidissement + pulvérisation quotidienne",
-    26: "🔒 Arrêt du retournement – Mise en éclosion",
+    25: "🔒 Arrêt du retournement – Mise en éclosion",
     27: "🐣 Éclosion imminente !",
   },
-  mirageGuide: {
-    7: {
-      title: "Mirage J7",
-      desc: "Premier mirage : détection des embryons vivants",
+  mirageGuide: { 
+    10: {
+      title: "Mirage J10",
+      desc: "Premier mirage : détection des embryons vivants", //OK
       signs: [
         { icon: "🟢", label: "Vivant", desc: "Réseau vasculaire visible, araignée rouge, embryon se déplace" },
         { icon: "⚪", label: "Œuf clair", desc: "Transparent, pas de développement. Retirer avec précaution." },
@@ -270,63 +271,63 @@ const INCUBATION_DATA = {
         { icon: "❓", label: "Douteux", desc: "Remettre en incubation 2-3 jours, re-mirer." },
       ],
     },
-    14: {
-      title: "Mirage J14",
-      desc: "Développement avancé : moitié de l'œuf obscurcie",
+    18: {
+      title: "Mirage J18",
+      desc: "Développement avancé : moitié de l'œuf obscurcie", //OK
       signs: [
         { icon: "🟢", label: "Vivant", desc: "Moitié sombre (embryon), chambre à air visible, mouvements possibles" },
-        { icon: "⚫", label: "Mort", desc: "Masse sombre sans réseau vasculaire, odeur possible. Retirer." },
+        { icon: "💀", label: "Mort", desc: "Masse sombre sans réseau vasculaire, odeur possible. Retirer." },
         { icon: "⚪", label: "Non fécondé", desc: "Toujours clair. Retirer." },
       ],
     },
-    22: {
-      title: "Mirage J22",
+    21: {
+      title: "Mirage J21", //OK
       desc: "Avant mise en éclosion : dernière vérification",
       signs: [
         { icon: "🟢", label: "Vivant", desc: "Œuf presque entièrement sombre, chambre à air irrégulière, mouvements" },
-        { icon: "⚫", label: "Mort", desc: "Pas de mouvement depuis 2-3 jours, chambre à air régulière. Retirer." },
+        { icon: "💀", label: "Mort", desc: "Pas de mouvement depuis 2-3 jours, chambre à air régulière. Retirer." },
       ],
     },
-    26: {
-      title: "Mirage J26 – Mise en éclosion",
+    25: {
+      title: "Mirage J25 – Mise en éclosion", //OK
       desc: "Arrêt du retournement. Placer les œufs à plat.",
       signs: [
-        { icon: "🟢", label: "Prêt", desc: "Chambre à air grande et irrégulière, mouvements internes, pip possible" },
-        { icon: "🔔", label: "Pip interne", desc: "Le caneton a percé la membrane interne. Éclosion dans 24-48h." },
-        { icon: "⚫", label: "Mort", desc: "Aucun signe de vie. Retirer délicatement." },
+        { icon: "🟢", label: "Prêt", desc: "Chambre à air grande et irrégulière, mouvements internes, piou piou possible" },
+        { icon: "🔊", label: "Piou piou interne", desc: "Le caneton a percé la membrane interne. Éclosion dans 24-48h." },
+        { icon: "💀", label: "Mort", desc: "Aucun signe de vie. Retirer délicatement." },
       ],
     },
   },
 };
 
-const S1_DATA = {
+const S1_DATA = { //OK
   brooding: [
-    { day: "J1-J3", temp: "35°C", note: "Chaleur maximale, surveillance intensive" },
-    { day: "J4-J7", temp: "33°C", note: "Légère réduction" },
-    { day: "S2", temp: "30°C", note: "Les canetons commencent à réguler" },
-    { day: "S3+", temp: "Ambiante", note: "Si > 20°C, lampe optionnelle" },
+    { day: "J1-J3", temp: "32 à 35°C", note: "Chaleur maximale sous lampe, surveillance intensive" },
+    { day: "J4-J7", temp: "33°C", note: "Légère réduction sous lampe" },
+    { day: "S2", temp: "29 à 32°C", note: "Les canetons commencent à réguler leur température" },
+    { day: "S3+", temp: "T° ambiante", note: "Si > 20°C, lampe optionnelle" },
   ],
   feeding: {
     protein: "22% minimum",
     food: "Granulés starter canard ou poussin (non médicamenté)",
-    water: "Abreuvoir peu profond (sécurité noyade)",
+    water: "Abreuvoir peu profond (⛔ sécurité : risque de noyade)",
     grit: "Gravier fin accessible dès J2",
   },
   faq: [
     { q: "Caneton qui titube ?", r: "Hypoglycémie possible. Eau sucrée en urgence (1cc miel/100ml)." },
-    { q: "Pâte collée autour du cloaque ?", r: "Nettoyer à l'eau tiède, sécher. Peut indiquer un problème de t°." },
+    { q: "Pâte collée autour du cloaque ?", r: "Nettoyer à l'eau tiède, sécher. Peut indiquer un problème de T°." },
     { q: "Caneton très mou et froid ?", r: "Hypothermie. Réchauffer progressivement sous la lampe. Appeler un vétérinaire si persiste." },
-    { q: "Refus de manger 24h ?", r: "Normal les 12 premières heures. Au-delà, vérifier t° et humidité." },
+    { q: "Refus de manger 24h ?", r: "Normal les 12 premières heures. Au-delà, vérifier T° et humidité." },
     { q: "Plumes collées ou humides ?", r: "Lampe trop basse ou humidité excessive. Ajuster." },
   ],
 };
 
-// Fonction utilitaire pour calculer le jour exact d'incubation
+// Fonction utilitaire pour calculer le jour exact d'incubation //OK
 const calculateIncubationDay = (startDateString) => {
   const start = new Date(startDateString);
   start.setHours(0, 0, 0, 0); // On force le début à minuit
 
-  const today = new Date(); // ligne à remplacer par const today = new Date(start.getTime() + 29 * 24 * 60 * 60 * 1000); pour faire les tests
+  const today = new Date(start.getTime() + 21 * 24 * 60 * 60 * 1000); // ligne à remplacer par const today = new Date(start.getTime() + 29 * 24 * 60 * 60 * 1000); pour faire les tests //ligne originale : const today = new Date();
   today.setHours(0, 0, 0, 0); // On force aujourd'hui à minuit
 
   const diffInMs = today.getTime() - start.getTime();
@@ -336,7 +337,7 @@ const calculateIncubationDay = (startDateString) => {
 };
 
 // ============================================================
-// ŒUF QUI ÉVOLUE SELON LA PROGRESSION
+// ŒUF QUI ÉVOLUE SELON LA PROGRESSION                         //OK
 // pct : pourcentage de progression global (0-100)
 // filled : true si cet œuf est "dépassé" par la barre
 // ============================================================
@@ -407,7 +408,7 @@ const EvolutionEgg = ({ pct, filled, size = 22 }) => {
 };
 
 // ============================================================
-// BARRE DE PROGRESSION — ŒUFS QUI ÉVOLUENT
+// BARRE DE PROGRESSION — ŒUFS QUI ÉVOLUENT                     //OK
 // ============================================================
 const DuckProgressBar = ({ current, total }) => {
   const pct = Math.min(100, (current / total) * 100);
@@ -458,7 +459,7 @@ const DuckProgressBar = ({ current, total }) => {
 };
 
 // ============================================================
-// MODAL GÉNÉRIQUE
+// MODAL GÉNÉRIQUE                                                //OK
 // ============================================================
 const Modal = ({ isOpen, onClose, title, children }) => (
   <AnimatePresence>
@@ -497,7 +498,7 @@ const Modal = ({ isOpen, onClose, title, children }) => (
 );
 
 // ============================================================
-// BOUTON PRINCIPAL
+// BOUTON PRINCIPAL                                                //OK
 // ============================================================
 const PrimaryBtn = ({ onClick, children, className = "", disabled = false }) => (
   <motion.button
@@ -512,7 +513,7 @@ const PrimaryBtn = ({ onClick, children, className = "", disabled = false }) => 
 );
 
 // ============================================================
-// PAGE ACCUEIL
+// PAGE ACCUEIL                                                   //OK
 // ============================================================
 const HomePage = ({ sessions, onNewSession, onSelectSession, onExport, onImportClick, onGuide, onAide }) => {
   return (
@@ -597,7 +598,7 @@ const HomePage = ({ sessions, onNewSession, onSelectSession, onExport, onImportC
             </h3>
             <div className="flex flex-col gap-3">
               {sessions.map((s) => {
-                const day = Math.min(calculateIncubationDay(s.startDate), 35);
+                const day = Math.min(calculateIncubationDay(s.startDate), 31);
                 return (
                   <motion.button
                     key={s.id}
@@ -616,11 +617,11 @@ const HomePage = ({ sessions, onNewSession, onSelectSession, onExport, onImportC
                       <div className="text-right">
                         <div className="text-3xl font-black text-[#5A8A4A]">J{day}</div>
                         <div className="text-xs text-[#8B7355] font-semibold">
-                          {day <= 25 ? "Incubation" : day <= 27 ? "Éclosion" : "S+1"}
+                          {day <= 25 ? "Incubation" : day <= 27 ? "Éclosion" : "S1"}
                         </div>
                       </div>
                     </div>
-                    <DuckProgressBar current={day} total={35} />
+                    <DuckProgressBar current={day} total={31} />
                   </motion.button>
                 );
               })}
@@ -637,7 +638,7 @@ const HomePage = ({ sessions, onNewSession, onSelectSession, onExport, onImportC
 };
 
 // ============================================================
-// PAGE SETUP
+// PAGE SETUP                                                    //OK
 // ============================================================
 const SetupPage = ({ onConfirm, onBack }) => {
   const [name, setName] = useState("");
@@ -652,7 +653,7 @@ const SetupPage = ({ onConfirm, onBack }) => {
   });
 
   const checklistItems = [
-    { key: "incubateur", label: "Incubateur nettoyé & désinfecté", icon: "🏠" },
+    { key: "incubateur", label: "Incubateur nettoyé & désinfecté", icon: "⚕️" },
     { key: "thermometre", label: "Thermomètre calibré à 37.5°C", icon: "🌡️" },
     { key: "hygrometre", label: "Hygromètre fonctionnel (45-50%)", icon: "💧" },
     { key: "mineur", label: "Lampe de mirage disponible", icon: "🔦" },
@@ -751,7 +752,7 @@ const SetupPage = ({ onConfirm, onBack }) => {
 };
 
 // ============================================================
-// COMPOSANT CHECKITEM
+// COMPOSANT CHECKITEM                                            //OK
 // ============================================================
 const CheckItem = ({ label, icon, checked, onChange }) => (
   <motion.button
@@ -774,15 +775,15 @@ const CheckItem = ({ label, icon, checked, onChange }) => (
 );
 
 // ============================================================
-// PAGE DASHBOARD
+// PAGE DASHBOARD                                                 //OK
 // ============================================================
 const DashboardPage = ({ session, onBack, onDeleteSession, onGuide, onUpdateSession, onBilan }) => {
   // 1. Gestion du jour et actualisation automatique
-  const [day, setDay] = useState(Math.min(calculateIncubationDay(session.startDate), 35));
+  const [day, setDay] = useState(Math.min(calculateIncubationDay(session.startDate), 31));
 
   useEffect(() => {
     const refreshDay = () => {
-      const updatedDay = Math.min(calculateIncubationDay(session.startDate), 35);
+      const updatedDay = Math.min(calculateIncubationDay(session.startDate), 31);
       if (updatedDay !== day) setDay(updatedDay);
     };
     const interval = setInterval(refreshDay, 60000);
@@ -791,8 +792,7 @@ const DashboardPage = ({ session, onBack, onDeleteSession, onGuide, onUpdateSess
 
   const params = INCUBATION_DATA.dailyParams(day);
   const isMirageDay = INCUBATION_DATA.mirageDays.includes(day);
-  const isLockdown = day >= 26 && day <= 27;
-  const isS1 = day >= 28;
+  const isLockdown = day >= 26 && day <= 31;
   const keyEvent = INCUBATION_DATA.keyEvents[day];
 
   const storageKey = `incubapp_daily_${session.id}_${day}`;
@@ -844,27 +844,26 @@ const DashboardPage = ({ session, onBack, onDeleteSession, onGuide, onUpdateSess
   }).filter(d => d.tempReelle !== null || d.humReelle !== null);
   
   const isCardComplete = () => {
-    if (isS1) return !!daily.water && !!daily.food && !!daily.lamp;
     const temp = parseFloat(tempEntry);
-    const isTempValid = !isNaN(temp) && temp >= 30 && temp <= 42;
+    const isTempValid = !isNaN(temp) && temp >= 35 && temp <= 42;
     const hum = parseFloat(humEntry);
-    const isHumValid = !isNaN(hum) && hum >= 10 && hum <= 99;
+    const isHumValid = !isNaN(hum) && hum >= 30 && hum <= 80;
     return isTempValid && isHumValid && !!daily.visual;
   };
 
   const handleValidate = () => setValidationOpen(true);
   
-  const phaseLabel = isS1 ? "Semaine +1" : isLockdown ? "Mise en éclosion" : "Incubation";
-  const phaseColor = isS1 ? "#C4703E" : isLockdown ? "#8B7355" : "#5A8A4A";
+  const phaseLabel = isLockdown ? "Mise en éclosion" : "Incubation";
+  const phaseColor = isLockdown ? "#8B7355" : "#5A8A4A";
 
   const isTempAlarm = tempEntry && (parseFloat(tempEntry) < 36.5 || parseFloat(tempEntry) > 38.5);
   const isHumAlarm = humEntry && (parseFloat(humEntry) < 35 || (day < 26 && parseFloat(humEntry) > 60));
 
   return (
-    <div className="min-h-screen flex flex-col" style={{ background: isS1 ? "linear-gradient(160deg, #FFF5EC 0%, #F5E8D0 100%)" : "linear-gradient(160deg, #F9F5EC 0%, #EDE4D0 100%)" }}>
+    <div className="min-h-screen flex flex-col" style={{ background: "linear-gradient(160deg, #F9F5EC 0%, #EDE4D0 100%)" }}>
       <header className="pt-8 pb-4 px-4 max-w-lg mx-auto w-full">
         <div className="flex justify-between items-center">
-          <button onClick={onBack} className="text-[#8B7355] text-sm flex items-center gap-1 hover:text-[#5A3E2B] font-semibold">← Accueil</button>
+          <button onClick={onBack} className="text-[#8B7355] text-sm flex items-center gap-1 hover:text-[#5A3E2B] font-semibold">← 🏠 Accueil</button>
           <button onClick={() => setConfirmDelete(true)} className="text-xs text-[#C4703E] hover:underline font-semibold">🗑️ Supprimer</button>
         </div>
         <div className="mt-4 flex justify-between items-end">
@@ -888,7 +887,7 @@ const DashboardPage = ({ session, onBack, onDeleteSession, onGuide, onUpdateSess
             </div>
             <button onClick={handleRemoveEgg} className="bg-[#FFE4E4] border-2 border-[#C45050] text-[#8B2020] px-3 py-1 rounded-xl text-xs font-bold hover:bg-red-100">➖ Retirer</button>
           </div>
-          <DuckProgressBar current={day} total={35} />
+          <DuckProgressBar current={day} total={31} />
         </div>
       </header>
 
@@ -908,27 +907,8 @@ const DashboardPage = ({ session, onBack, onDeleteSession, onGuide, onUpdateSess
             🐣 Signaler une éclosion
           </button>
         )}
-		{day >= 28 && !session.incubationTerminee && (
-          <button
-            onClick={() => setFinIncubationOpen(true)}
-            className="w-full py-3 rounded-2xl border-2 border-[#8B7355] text-white font-bold text-sm bg-gradient-to-b from-[#8B7355] to-[#6B5535] shadow-md hover:from-[#9B8365] transition-all"
-          >
-            🏁 Terminer l'incubation
-          </button>
-        )}
-		
-		{session.incubationTerminee && (
-          <button
-            onClick={onBilan}
-            className="w-full py-3 rounded-2xl border-2 border-[#5A8A4A] text-white font-bold text-sm bg-gradient-to-b from-[#5A8A4A] to-[#3A6A2A] shadow-md hover:from-[#6A9A5A] transition-all"
-          >
-            🏆 Voir le bilan de l'incubation
-          </button>
-        )}
 
-        {isS1 && <PrimaryBtn onClick={() => setS1Open(true)} className="w-full">🐥 Soins Semaine +1</PrimaryBtn>}
-
-        {!isS1 && (
+        {day <= 31 && (
           <>
             <div className="grid grid-cols-2 gap-3">
               <div className={`bg-white/70 rounded-2xl border-2 p-4 shadow-sm ${isTempAlarm ? 'border-red-500 animate-pulse' : 'border-[#8FAF7E]'}`}>
@@ -970,29 +950,18 @@ const DashboardPage = ({ session, onBack, onDeleteSession, onGuide, onUpdateSess
               </div>
             </div>
           </>
-        )}
+		)}
 
         <div className="bg-white/70 rounded-2xl border-2 border-[#C4A882] p-4 shadow-sm">
           <h3 className="text-sm font-bold text-[#3D2B1F] mb-3">✅ Actions</h3>
           <div className="flex flex-col gap-2">
-            {!isS1 && (
-              <>
-                {day >= 1 && day <= 25 && <CheckItem label="Retournement" icon="🔄" checked={!!daily.turning} onChange={(v) => saveDaily("turning", v)} />}
-                {day >= 10 && day <= 25 && <CheckItem label="Pulvérisation" icon="🌿" checked={!!daily.spray} onChange={(v) => saveDaily("spray", v)} />}
-                {isLockdown && <CheckItem label="Œufs à plat" icon="🔒" checked={!!daily.lockdown} onChange={(v) => saveDaily("lockdown", v)} />}
-                <CheckItem label="Vérification visuelle" icon="👁️" checked={!!daily.visual} onChange={(v) => saveDaily("visual", v)} />
-              </>
-            )}
-            {isS1 && (
-              <>
-                <CheckItem label="Eau fraîche" icon="🚰" checked={!!daily.water} onChange={(v) => saveDaily("water", v)} />
-                <CheckItem label="Alimentation" icon="🌾" checked={!!daily.food} onChange={(v) => saveDaily("food", v)} />
-                <CheckItem label="Lampe/Chaleur" icon="💡" checked={!!daily.lamp} onChange={(v) => saveDaily("lamp", v)} />
-              </>
-            )}
-          </div>
+		    {day >= 2 && day <= 25 && <CheckItem label="Retournement" icon="🔄" checked={!!daily.turning} onChange={(v) => saveDaily("turning", v)} />}
+		    {day >= 2 && day <= 25 && <CheckItem label="Pulvérisation" icon="🚿" checked={!!daily.spray} onChange={(v) => saveDaily("spray", v)} />}
+		    {isLockdown && <CheckItem label="Œufs à plat" icon="🔒" checked={!!daily.lockdown} onChange={(v) => saveDaily("lockdown", v)} />}
+		    <CheckItem label="Vérification visuelle" icon="👁️" checked={!!daily.visual} onChange={(v) => saveDaily("visual", v)} />
+		  </div>
         </div>
-		{!isS1 && rapportData.length > 0 && (
+		{rapportData.length > 0 && (
         <button
           onClick={() => setRapportOpen(true)}
           className="w-full py-3 rounded-2xl border-2 border-[#8FAF7E] text-[#3A5A2A] font-bold text-sm bg-white/60 hover:bg-[#EDE4D0] transition-all"
@@ -1003,9 +972,24 @@ const DashboardPage = ({ session, onBack, onDeleteSession, onGuide, onUpdateSess
         <PrimaryBtn onClick={handleValidate} disabled={!isCardComplete()} className="w-full">
           {isCardComplete() ? "✅ Valider la journée" : "Saisie incomplète"}
         </PrimaryBtn>
+		{session.hatchCount > 0 && (
+          <div className="mt-4">
+            <PrimaryBtn onClick={() => setS1Open(true)} className="w-full">
+              🐥 Soins Semaine S1
+            </PrimaryBtn>
+          </div>
+        )}
+		{day >= 28 && !session.incubationTerminee && (
+          <button
+            onClick={() => setFinIncubationOpen(true)}
+            className="w-full py-3 rounded-2xl border-2 border-[#8B7355] text-white font-bold text-sm bg-gradient-to-b from-[#8B7355] to-[#6B5535] shadow-md hover:from-[#9B8365] transition-all"
+          >
+            🐣 Terminer l'incubation
+          </button>
+        )}
       </main>
 	  
-	  <Modal isOpen={finIncubationOpen} onClose={() => setFinIncubationOpen(false)} title="🏁 Terminer l'incubation">
+	  <Modal isOpen={finIncubationOpen} onClose={() => setFinIncubationOpen(false)} title="🐣 Terminer l'incubation">
         <div className="flex flex-col gap-4">
           <p className="text-sm text-[#5A3E2B] font-medium">
             Êtes-vous sûr de vouloir terminer cette incubation ? Cette action déclenchera le suivi de la première semaine de vie des canetons.
@@ -1032,8 +1016,9 @@ const DashboardPage = ({ session, onBack, onDeleteSession, onGuide, onUpdateSess
             };
             onUpdateSession(updated);
             setFinIncubationOpen(false);
+            onBilan();
           }} className="w-full">
-            ✅ Confirmer la fin d'incubation
+            🏆 Terminer et voir le bilan
           </PrimaryBtn>
         </div>
       </Modal>
@@ -1094,7 +1079,77 @@ const DashboardPage = ({ session, onBack, onDeleteSession, onGuide, onUpdateSess
     </div>
   </div>
 </Modal>
+<Modal isOpen={mirageOpen} onClose={() => setMirageOpen(false)} title={MIRAGE_GUIDE_RICH[day]?.title}>
+  <div className="flex flex-col gap-4">
+    {/* 1. Image de l'état de développement */}
+    {MIRAGE_GUIDE_RICH[day]?.illus && (
+      <div className="text-center bg-[#F5F0E8] p-4 rounded-2xl border-2 border-[#C4A882]">
+        <div className="text-[10px] uppercase font-bold text-[#8B7355] mb-2">Stade de développement</div>
+        <img src={IMGS[MIRAGE_GUIDE_RICH[day].illus]} className="h-24 mx-auto object-contain" alt="Développement" />
+      </div>
+    )}
 
+    <p className="text-sm text-[#5A3E2B] font-medium leading-relaxed">
+      {MIRAGE_GUIDE_RICH[day]?.desc}
+    </p>
+
+    {/* 2. Comparaison Vivant / Mort */}
+    <div className="grid grid-cols-2 gap-3">
+      {MIRAGE_GUIDE_RICH[day]?.signs.map((sign, idx) => (
+        <div key={idx} className="flex flex-col items-center bg-[#F5F0E8] rounded-2xl p-3 border-2 border-[#C4A882] shadow-sm">
+          <img src={IMGS[sign.img]} className="h-20 object-contain mb-2" alt={sign.label} />
+          <div className="font-bold text-xs text-[#3D2B1F] text-center mb-1">{sign.label}</div>
+          <div className="text-[10px] text-[#5A3E2B] text-center leading-tight">{sign.desc}</div>
+        </div>
+      ))}
+    </div>
+
+    {/* 3. Poche d'air */}
+    {MIRAGE_GUIDE_RICH[day]?.airImg && (
+      <div className="flex items-center gap-4 bg-[#EDF5E8] p-4 rounded-2xl border-2 border-[#8FAF7E]">
+        <img src={IMGS[MIRAGE_GUIDE_RICH[day].airImg]} className="h-16 object-contain" alt="Poche d'air" />
+        <div>
+          <div className="font-bold text-sm text-[#3A5A2A]">Taille de la poche d'air</div>
+          <div className="text-xs text-[#5A3E2B] font-medium">{MIRAGE_GUIDE_RICH[day].airPocket}</div>
+        </div>
+      </div>
+    )}
+
+    <div className="bg-[#FFF3E8] p-3 rounded-xl border border-[#D4A082] text-[10px] text-[#7A4010] italic">
+      💡 {MIRAGE_GUIDE_RICH[day]?.tip}
+    </div>
+  </div>
+</Modal>
+<Modal isOpen={s1Open} onClose={() => setS1Open(false)} title="🐥 Soins Semaine S1">
+  <div className="flex flex-col gap-4">
+    <p className="text-sm text-[#5A3E2B] font-medium">Paramètres de l'éleveuse selon l'âge du caneton :</p>
+    <div className="flex flex-col gap-2">
+      {S1_DATA.brooding.map((row, idx) => (
+        <div key={idx} className="flex items-start gap-3 bg-[#F5F0E8] rounded-xl p-3 border border-[#C4A882]">
+          <div className="font-bold text-sm text-[#3D2B1F] w-16 flex-shrink-0">{row.day}</div>
+          <div className="font-bold text-sm text-[#C4703E] w-16 flex-shrink-0">{row.temp}</div>
+          <div className="text-xs text-[#5A3E2B]">{row.note}</div>
+        </div>
+      ))}
+    </div>
+    <div className="bg-[#EDF5E8] rounded-xl p-3 border border-[#8FAF7E]">
+      <div className="font-bold text-sm text-[#3A5A2A] mb-2">🍽️ Alimentation</div>
+      <div className="text-xs text-[#5A3E2B] flex flex-col gap-1">
+        <span>Protéines : <b>{S1_DATA.feeding.protein}</b></span>
+        <span>Aliment : {S1_DATA.feeding.food}</span>
+        <span>Eau : {S1_DATA.feeding.water}</span>
+        <span>Gravier : {S1_DATA.feeding.grit}</span>
+      </div>
+    </div>
+    <div className="font-bold text-sm text-[#3D2B1F]">❓ FAQ Semaine S1</div>
+    {S1_DATA.faq.map((item, idx) => (
+      <div key={idx} className="bg-[#F5F0E8] rounded-xl p-3 border border-[#C4A882]">
+        <div className="font-bold text-xs text-[#3D2B1F] mb-1">{item.q}</div>
+        <div className="text-xs text-[#5A3E2B]">{item.r}</div>
+      </div>
+    ))}
+  </div>
+</Modal>
       {/* Modals simplifiées pour l'exemple */}
       <Modal isOpen={validationOpen} onClose={() => {setValidationOpen(false); setSaveReminderOpen(true)}} title="🎉 Validé !">
         <PrimaryBtn onClick={() => {setValidationOpen(false); onBack()}} className="w-full">OK</PrimaryBtn>
@@ -1111,9 +1166,10 @@ const DashboardPage = ({ session, onBack, onDeleteSession, onGuide, onUpdateSess
 };
 
 // ============================================================
-// PAGE BILAN
+// PAGE BILAN                                                     //OK
 // ============================================================
 const BilanPage = ({ session, onBack }) => {
+  const [s1Open, setS1Open] = useState(false);
   const totalDays = session.dateFinIncubation
     ? Math.floor((new Date(session.dateFinIncubation) - new Date(session.startDate)) / 86400000)
     : calculateIncubationDay(session.startDate);
@@ -1142,7 +1198,7 @@ const BilanPage = ({ session, onBack }) => {
     <div className="min-h-screen flex flex-col" style={{ background: "linear-gradient(160deg, #F9F5EC 0%, #EDE4D0 100%)" }}>
       <header className="pt-8 pb-4 px-4 max-w-lg mx-auto w-full">
         <button onClick={onBack} className="text-[#8B7355] text-sm flex items-center gap-1 hover:text-[#5A3E2B] font-semibold mb-4">← Retour</button>
-        <h2 className="text-3xl font-black text-[#2A1A0E]">🏆 Bilan</h2>
+        <h2 className="text-3xl font-black text-[#2A1A0E]">📊 Bilan</h2>
         <p className="text-sm text-[#7A5C3E] mt-1 font-medium">{session.name}</p>
       </header>
 
@@ -1169,14 +1225,14 @@ const BilanPage = ({ session, onBack }) => {
 
         {/* Durée */}
         <div className="bg-white/80 rounded-2xl border-2 border-[#C4A882] p-4 shadow-sm flex justify-between items-center">
-          <span className="text-sm font-bold text-[#5A3E2B]">📅 Durée totale</span>
+          <span className="text-sm font-bold text-[#5A3E2B]">⏳ Durée totale</span>
           <span className="text-xl font-black text-[#2A1A0E]">{totalDays} jours</span>
         </div>
 
         {/* Graphique global */}
-        {bilanData.length > 0 && (
+        {(
           <div className="bg-white/80 rounded-2xl border-2 border-[#C4A882] p-4 shadow-sm">
-            <h3 className="text-sm font-bold text-[#3D2B1F] mb-3">📊 T° & Hygrométrie sur toute l'incubation</h3>
+            <h3 className="text-sm font-bold text-[#3D2B1F] mb-3">📉 T° & Hygrométrie sur toute l'incubation</h3>
             <div style={{ height: 220 }}>
               <ResponsiveContainer width="100%" height="100%">
                 <ScatterChart margin={{ top: 10, right: 10, bottom: 10, left: -10 }}>
@@ -1205,19 +1261,53 @@ const BilanPage = ({ session, onBack }) => {
             </div>
             {session.dateFinIncubation && (
               <div className="flex justify-between">
-                <span className="text-[#5A3E2B] font-medium">🏁 Fin d'incubation</span>
+                <span className="text-[#5A3E2B] font-medium">🚩 Fin d'incubation</span>
                 <span className="font-bold">{new Date(session.dateFinIncubation).toLocaleDateString("fr-FR")}</span>
               </div>
             )}
           </div>
         </div>
+		<PrimaryBtn onClick={() => setS1Open(true)} className="w-full">
+          🐥 Soins Semaine S1
+        </PrimaryBtn>
       </main>
+
+      <Modal isOpen={s1Open} onClose={() => setS1Open(false)} title="❤️ Soins Semaine S1">
+        <div className="flex flex-col gap-4">
+          <p className="text-sm text-[#5A3E2B] font-medium">Paramètres de l'éleveuse selon l'âge du caneton :</p>
+          <div className="flex flex-col gap-2">
+            {S1_DATA.brooding.map((row, idx) => (
+              <div key={idx} className="flex items-start gap-3 bg-[#F5F0E8] rounded-xl p-3 border border-[#C4A882]">
+                <div className="font-bold text-sm text-[#3D2B1F] w-16 flex-shrink-0">{row.day}</div>
+                <div className="font-bold text-sm text-[#C4703E] w-16 flex-shrink-0">{row.temp}</div>
+                <div className="text-xs text-[#5A3E2B]">{row.note}</div>
+              </div>
+            ))}
+          </div>
+          <div className="bg-[#EDF5E8] rounded-xl p-3 border border-[#8FAF7E]">
+            <div className="font-bold text-sm text-[#3A5A2A] mb-2">🍽️ Alimentation</div>
+            <div className="text-xs text-[#5A3E2B] flex flex-col gap-1">
+              <span>Protéines : <b>{S1_DATA.feeding.protein}</b></span>
+              <span>Aliment : {S1_DATA.feeding.food}</span>
+              <span>Eau : {S1_DATA.feeding.water}</span>
+              <span>Gravier : {S1_DATA.feeding.grit}</span>
+            </div>
+          </div>
+          <div className="font-bold text-sm text-[#3D2B1F]">❓ FAQ Semaine S1</div>
+          {S1_DATA.faq.map((item, idx) => (
+            <div key={idx} className="bg-[#F5F0E8] rounded-xl p-3 border border-[#C4A882]">
+              <div className="font-bold text-xs text-[#3D2B1F] mb-1">{item.q}</div>
+              <div className="text-xs text-[#5A3E2B]">{item.r}</div>
+            </div>
+          ))}
+        </div>
+      </Modal>
     </div>
   );
 };
 
 // ============================================================
-// PAGE GUIDE COMPLET
+// PAGE GUIDE COMPLET                                              //OK
 // ============================================================
 const GuidePage = ({ onBack }) => {
   const [open, setOpen] = useState(null);
@@ -1324,7 +1414,7 @@ const GuidePage = ({ onBack }) => {
 };
 
 // ============================================================
-// APPLICATION PRINCIPALE
+// APPLICATION PRINCIPALE                                         //OK
 // ============================================================
 export default function IncubApp() {
   const [page, setPage] = useState("home");
@@ -1445,7 +1535,7 @@ export default function IncubApp() {
         <div className="flex flex-col gap-4 text-sm text-[#3D2B1F]">
           <div className="bg-[#F5F0E8] rounded-xl p-3 border-2 border-[#C4A882]">
             <div className="font-black mb-1">🦆 Bienvenue sur Incub'app</div>
-            <p className="font-medium text-[#5A3E2B]">Votre carnet de bord numérique pour l'incubation des œufs de Coureur Indien, d'après le guide de Lydiane B.</p>
+            <p className="font-medium text-[#5A3E2B]">Votre carnet de bord numérique pour l'incubation des œufs de Coureur Indien, d'après le guide de Lydiane B. et Loïc M.</p>
           </div>
           <div className="bg-[#F5F0E8] rounded-xl p-3 border-2 border-[#C4A882]">
             <div className="font-black mb-2">📋 Comment démarrer</div>
@@ -1453,7 +1543,7 @@ export default function IncubApp() {
               <li>1. Cliquez sur "Démarrer un suivi"</li>
               <li>2. Donnez un nom à votre couvée et saisissez la date J0</li>
               <li>3. Renseignez le nombre d'œufs</li>
-              <li>4. Chaque jour, remplissez le relevé du jour</li>
+              <li>4. Chaque jour, remplissez le relevé des paramètres</li>
             </ol>
           </div>
           <div className="bg-[#FFF3CD] rounded-xl p-3 border-2 border-[#C4A460]">
@@ -1466,17 +1556,17 @@ export default function IncubApp() {
             </ul>
           </div>
           <div className="bg-[#F5F0E8] rounded-xl p-3 border-2 border-[#C4A882]">
-            <div className="font-black mb-2">📊 Fonctionnalités</div>
+            <div className="font-black mb-2">⚙️ Fonctionnalités</div>
             <ul className="flex flex-col gap-1 font-medium text-[#5A3E2B]">
               <li>• Relevé quotidien T° et hygrométrie avec graphique</li>
-              <li>• Guide de mirage illustré (J7, J14, J22, J26)</li>
+              <li>• Guide de mirage illustré (J10, J18, J21, J25)</li>
               <li>• Signalement des éclosions dès J26</li>
               <li>• Bilan final avec statistiques</li>
             </ul>
          </div>
          <div className="bg-[#F5F0E8] rounded-xl p-3 border-2 border-[#C4A882]">
            <div className="font-black mb-1">📖 Guide complet</div>
-           <p className="font-medium text-[#5A3E2B]">Consultez le guide intégral depuis l'accueil pour tout savoir sur la sélection des œufs, l'hygrométrie, l'éclosion et les soins S+1.</p>
+           <p className="font-medium text-[#5A3E2B]">Consultez le guide intégral depuis l'accueil pour tout savoir sur la sélection des œufs, l'hygrométrie, l'éclosion et les soins à S1.</p>
          </div>
        </div>
      </Modal>
