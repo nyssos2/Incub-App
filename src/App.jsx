@@ -327,7 +327,7 @@ const calculateIncubationDay = (startDateString) => {
   const start = new Date(startDateString);
   start.setHours(0, 0, 0, 0); // On force le début à minuit
 
-  const today = new Date(start.getTime() + 21 * 24 * 60 * 60 * 1000); // ligne à remplacer par const today = new Date(start.getTime() + 29 * 24 * 60 * 60 * 1000); pour faire les tests //ligne originale : const today = new Date();
+  const today = new Date(); // ligne à remplacer par const today = new Date(start.getTime() + 29 * 24 * 60 * 60 * 1000); pour faire les tests //ligne originale : const today = new Date();
   today.setHours(0, 0, 0, 0); // On force aujourd'hui à minuit
 
   const diffInMs = today.getTime() - start.getTime();
